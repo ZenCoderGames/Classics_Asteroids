@@ -1,0 +1,147 @@
+export const CONFIG = {
+  canvas: {
+    width: 800,
+    height: 600,
+  },
+
+  colors: {
+    background: "#080910",
+    neon: "#39ff14",
+    neonDim: "rgba(57, 255, 20, 0.35)",
+    neonBright: "#7dff5c",
+    neonGlow: "rgba(57, 255, 20, 0.55)",
+    hitFlash: "rgba(255, 255, 255, 0.85)",
+    player: "#14ffaa",
+    playerGlow: "rgba(20, 255, 170, 0.55)",
+    playerThrust: "rgba(20, 255, 170, 0.65)",
+    particle: "#39ff14",
+    particleBright: "#b8ff9e",
+  },
+
+  ship: {
+    radius: 12,
+    rotationSpeed: 4.8,
+    thrustAccel: 280,
+    maxSpeed: 420,
+    bulletCooldownMs: 220,
+    invulnMs: 3000,
+    hyperspaceCooldownMs: 900,
+    hyperspaceOverlapRadius: 18,
+    lineWidth: 2,
+    thrustTrailWidth: 6,
+  },
+
+  bullet: {
+    speed: 520,
+    lifetimeMs: 1100,
+    radius: 2,
+    maxOnScreen: 4,
+    lineWidth: 2,
+  },
+
+  asteroid: {
+    large: { radius: 42, speed: 55, score: 20, vertices: 9 },
+    medium: { radius: 26, speed: 95, score: 50, vertices: 8 },
+    small: { radius: 14, speed: 155, score: 100, vertices: 7 },
+    jaggedness: 0.42,
+    lineWidth: 2,
+    spawnEdgePadding: 60,
+  },
+
+  ufo: {
+    large: {
+      radius: 20,
+      speed: 85,
+      score: 200,
+      fireIntervalMs: 2000,
+      spawnIntervalMs: 14000,
+      lineWidth: 2,
+      aimSpread: 0.45,
+    },
+    small: {
+      radius: 13,
+      speed: 145,
+      score: 1000,
+      fireIntervalMs: 850,
+      spawnIntervalMs: 11000,
+      scoreThreshold: 8000,
+      lineWidth: 2,
+      aimSpread: 0.1,
+    },
+    bulletSpeed: 290,
+    bulletLifetimeMs: 2200,
+    bulletRadius: 2,
+    maxOnScreen: 3,
+    spawnEdgePadding: 40,
+  },
+
+  wave: {
+    initialLargeCount: 4,
+    countIncreasePerWave: 1,
+    speedMultiplierPerWave: 1.1,
+    maxLargeCount: 14,
+    waveClearDelayMs: 1800,
+    waveLabelMs: 1200,
+  },
+
+  lives: {
+    starting: 3,
+  },
+
+  effects: {
+    hitPauseMs: 500,
+    hitFlashMs: 220,
+    hitFlashIntervalMs: 45,
+    shakeDurationMs: 300,
+    shakeAmplitude: 10,
+    projectileHitPauseMs: 90,
+    projectileHitFlashMs: 110,
+    projectileShakeDurationMs: 150,
+    projectileShakeAmplitude: 4,
+    respawnDelayMs: 1600,
+    spawnParticleCount: 28,
+    hitParticleCount: 18,
+    deathParticleCount: 36,
+    bulletHitParticleCount: 10,
+    ufoDestroyParticleCount: 22,
+    particleLifeMs: 650,
+    particleSpeedMin: 60,
+    particleSpeedMax: 220,
+    thrustParticleIntervalMs: 40,
+    scorePopupLifeMs: 900,
+    scorePopupDriftSpeed: 42,
+    scorePopupFontSize: 18,
+  },
+
+  assets: {
+    music: "audio/music.mp3",
+  },
+
+  audio: {
+    enabledByDefault: true,
+    masterVolume: 0.38,
+    musicVolume: 1.0,
+    musicAttenuation: 0.42,
+    thrustHumVolume: 0.12,
+    thrustHumFreq: 46,
+    thrustHumFilterHz: 140,
+    thrustHumFadeMs: 120,
+    hitPing: {
+      baseFreq: 420,
+      pitchRatio: 1.08,
+      pitchBend: 1.22,
+      durationSec: 0.07,
+      volume: 0.11,
+      comboResetMs: 900,
+      maxStep: 24,
+    },
+  },
+
+  keys: {
+    rotateLeft: ["ArrowLeft", "KeyA"],
+    rotateRight: ["ArrowRight", "KeyD"],
+    thrust: ["ArrowUp", "KeyW"],
+    fire: ["Space"],
+    hyperspace: ["ShiftLeft", "ShiftRight", "KeyH"],
+  },
+};

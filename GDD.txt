@@ -1,0 +1,50 @@
+Game Design Document: Asteroids
+
+Concept: A minimalist, high-stakes space survival game where players pilot a ship through a hazardous asteroid field, managing momentum and splitting targets to survive.
+
+Core Gameplay Mechanics
+- Player Controls & PhysicsThrust: Applies forward acceleration in the direction the ship is facing.
+- Rotation: Rotates the ship left or right using angular velocity.
+- Drift: Space features zero friction. The ship maintains momentum until counter-thrust is applied.
+- Fire: Shoots straight-line projectiles from the ship's nose.
+
+Spatial Rules
+- Toroidal Space (Screen Wrap): Moving past any screen edge instantly teleports the entity (ship, asteroid, or bullet) to the exact opposite side.
+- Hyperspace Panic Button: Instantly teleports the ship to a random screen coordinate. If it teleports onto an asteroid or enemy ship or bullet, instant self-destruction upon arrival to balance its utility.
+
+Game Entities & Behavior
+- Asteroid Splitting System
+    - Large Asteroids: Slowest speed. Splitting creates two Medium Asteroids.
+    - Medium Asteroids: Medium speed. Splitting creates two Small Asteroids.
+    - Small Asteroids: Fastest speed. Destroyed completely upon hit.
+- Enemy Threats (Anti-Camping)
+    - Large UFO: Spawns periodically. Shoots projectiles in random directions.
+    - Small UFO: Spawns at higher scores. Actively targets and shoots toward the player's position.
+    
+Game Loop & Systems
+- Scoring System
+    - Large Asteroid: Lowest point value.
+    - Medium Asteroid: Medium point value.
+    - Small Asteroid: High point value.
+    - UFOs: Highest point value (Small UFO yields more than Large UFO).
+    
+Progression & Flow
+- Spawn: Player spawns in the center with 3 lives and temporary invulnerability.
+- Clear Wave: Player must destroy all asteroids and UFOs on screen.
+- Next Wave: Next level spawns a higher density of large asteroids at faster base speeds.
+- Game Over: Triggers when all player lives hit zero.
+
+Art Style
+- Neon green line Art
+
+UI:
+- Use the skill make-classic-game-ui for the HTML layout and javascript for the game logic.
+- The top left panel shows Score, the top right shows Lives left
+
+Game Feel:
+- The Player ship should have a trail based on its velocity
+- When the player hits an ufo or asteroid, do the follow: hit flash, hit pause, camera shake, vfx and sound fx
+- There should be audio and particle effects for: spawning, projectile shots, projectile hits, death
+
+Additonal Notes:
+- All configurable elements should be defined in config.js

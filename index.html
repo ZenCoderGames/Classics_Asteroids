@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asteroids</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="game-container">
+      <header class="game-header">
+        <div class="hud-card">
+          <span class="hud-label">Score</span>
+          <span id="score" class="hud-value">0</span>
+        </div>
+
+        <div class="title-block">
+          <h1 class="game-title">Asteroids</h1>
+          <p class="game-subtitle">A Classic</p>
+        </div>
+
+        <div class="hud-card hud-card-right">
+          <span class="hud-label">Lives</span>
+          <span id="lives" class="hud-value">3</span>
+        </div>
+      </header>
+
+      <main class="playfield-shell">
+        <div class="canvas-wrapper">
+          <canvas id="game-canvas"></canvas>
+        </div>
+
+        <div id="menu-overlay" class="overlay">
+          <div class="prompt-card">
+            <p class="menu-heading">Survive the Field</p>
+            <p class="controls-hint">
+              Rotate: ← → &nbsp;|&nbsp; Thrust: ↑ &nbsp;|&nbsp; Fire: Space
+              &nbsp;|&nbsp; Hyperspace: Shift
+            </p>
+            <button id="play-btn" class="btn btn-primary" type="button">Play</button>
+          </div>
+        </div>
+
+        <div id="defeat-overlay" class="overlay hidden">
+          <div class="popup">
+            <h2>Game Over</h2>
+            <p id="final-score">Score: 0</p>
+            <button id="restart-btn" class="btn btn-primary" type="button">Play Again</button>
+          </div>
+        </div>
+      </main>
+
+      <div
+        id="wave-progress"
+        class="wave-progress hidden"
+        role="progressbar"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="0"
+        aria-label="Wave progress"
+      >
+        <span id="wave-number" class="wave-progress-wave">Wave 1</span>
+        <div class="wave-progress-track">
+          <div id="wave-progress-fill" class="wave-progress-fill"></div>
+        </div>
+        <span id="wave-progress-remaining" class="wave-progress-remaining">— left</span>
+      </div>
+
+      <div class="game-footer">
+        <button id="music-toggle" class="music-toggle" type="button">Sound: On</button>
+        <a
+          class="music-link"
+          href="https://pixabay.com/users/mondamusic-54713575/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Music</a>
+      </div>
+    </div>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
