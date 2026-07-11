@@ -1506,6 +1506,45 @@ function gameLoop(timestamp) {
 
 // ─── Input ──────────────────────────────────────────────────────────────────
 
+function setInput(name, down) {
+  if (name in game.input) game.input[name] = down;
+}
+
+function bindMobileControls() {
+  const controls = document.getElementById("mobile-controls");
+  if (!controls) return;
+
+  const setPressed = (btn, pressed) => {
+    btn.classList.toggle("is-pressed", pressed);
+  };
+
+  const onDown = (btn, input) => {
+    setInput(input, true);
+    setPressed(btn, true);
+    getAudioContext();
+  };
+
+  const onUp = (btn, input) => {
+    setInput(input, false);
+    setPressed(btn, false);
+  };
+
+  for (const btn of controls.querySelectorAll("[data-input]")) {
+    const input = btn.dataset.input;
+    btn.addEventListener("pointerdown", (e) => {
+      e.preventDefault();
+      btn.setPointerCapture(e.pointerId);
+      onDown(btn, input);
+    });
+    const release = () => onUp(btn, input);
+    btn.addEventListener("pointerup", release);
+    btn.addEventListener("pointercancel", release);
+    btn.addEventListener("pointerleave", (e) => {
+      if (!btn.hasPointerCapture(e.pointerId)) release();
+    });
+  }
+}
+
 function setKey(code, down) {
   if (keyMatches(code, CONFIG.keys.rotateLeft)) game.input.left = down;
   if (keyMatches(code, CONFIG.keys.rotateRight)) game.input.right = down;
@@ -1546,6 +1585,12 @@ musicToggle.addEventListener("click", () => {
   }
   syncMusic();
 });
+
+bindMobileControls();
+
+if (CONFIG.debug.showMobileControls) {
+  document.body.classList.add("debug-mobile-controls");
+}
 
 // ─── Boot ───────────────────────────────────────────────────────────────────
 

@@ -361,6 +361,76 @@ body::before {
   text-decoration: underline;
 }
 
+.mobile-controls {
+  display: none;
+  gap: 0.6rem;
+  width: min(100%, 824px);
+  padding: 0.75rem;
+  border: 1px solid rgba(57, 255, 20, 0.12);
+  border-radius: 12px;
+  background:
+    linear-gradient(180deg, rgba(57, 255, 20, 0.04), transparent),
+    rgba(12, 20, 12, 0.78);
+  box-shadow: inset 0 1px 0 rgba(57, 255, 20, 0.06);
+}
+
+.mobile-controls-row {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.mobile-controls-row:first-child {
+  grid-template-columns: 1fr 1.2fr 1fr;
+}
+
+.mobile-controls-row:last-child {
+  grid-template-columns: 1fr 1fr;
+}
+
+.control-btn {
+  min-height: 52px;
+  border: 1px solid rgba(57, 255, 20, 0.25);
+  border-radius: 12px;
+  background:
+    linear-gradient(180deg, rgba(57, 255, 20, 0.1), transparent),
+    rgba(20, 36, 20, 0.9);
+  color: var(--accent);
+  font: inherit;
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow:
+    inset 0 1px 0 rgba(57, 255, 20, 0.1),
+    0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: transform 0.08s, filter 0.08s, box-shadow 0.08s;
+}
+
+.control-btn-thrust {
+  font-size: 1.5rem;
+}
+
+.control-btn-action {
+  font-size: 0.9rem;
+}
+
+.control-btn:active,
+.control-btn.is-pressed {
+  transform: scale(0.96);
+  filter: brightness(1.15);
+  box-shadow:
+    inset 0 1px 0 rgba(57, 255, 20, 0.2),
+    0 0 16px rgba(57, 255, 20, 0.35);
+}
+
+body.debug-mobile-controls .mobile-controls {
+  display: grid;
+}
+
 @media (max-width: 720px) {
   .game-container {
     padding-top: 1rem;
@@ -382,5 +452,13 @@ body::before {
 
   .hud-value {
     font-size: 1.7rem;
+  }
+
+  .controls-hint {
+    display: none;
+  }
+
+  .mobile-controls {
+    display: grid;
   }
 }

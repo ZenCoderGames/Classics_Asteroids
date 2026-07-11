@@ -1,4 +1,8 @@
 export const CONFIG = {
+  debug: {
+    showMobileControls: false,
+  },
+
   canvas: {
     width: 800,
     height: 600,
